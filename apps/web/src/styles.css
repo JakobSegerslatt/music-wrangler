@@ -1,0 +1,357 @@
+:root {
+  color-scheme: dark;
+  --bg: #15171c;
+  --panel: #1e2128;
+  --raised: #2a2e37;
+  --border: #363b46;
+  --text: #e8eaee;
+  --muted: #9ba1ad;
+  --accent: #f2b33d;
+  --accent-text: #1b1400;
+  --danger: #ff8a7a;
+  font-family: system-ui, 'Segoe UI', sans-serif;
+  font-size: 15px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.3rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  overflow-wrap: anywhere;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--raised);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--muted);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+button.quiet {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--muted);
+  text-align: left;
+  text-decoration: underline;
+}
+
+input[type='text'],
+input[type='url'],
+input[type='number'],
+select {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.error {
+  margin: 0;
+  color: var(--danger);
+  overflow-wrap: anywhere;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  min-height: 100vh;
+}
+
+/* Låtlistan */
+
+.songs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border-right: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.add-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.add-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.empty {
+  margin: 0;
+  color: var(--muted);
+}
+
+.song-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.song {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--raised);
+}
+
+.song.selected {
+  border-color: var(--accent);
+}
+
+.song-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  border: none;
+  background: none;
+  text-align: left;
+}
+
+.song-title {
+  overflow-wrap: anywhere;
+}
+
+.song-status {
+  color: var(--muted);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.song-status.error {
+  color: var(--danger);
+}
+
+.song-main progress {
+  width: 100%;
+  height: 6px;
+  accent-color: var(--accent);
+}
+
+.song-remove {
+  border: none;
+  border-left: 1px solid var(--border);
+  border-radius: 0 6px 6px 0;
+  background: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+/* Redigeraren */
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+.placeholder,
+.hint {
+  margin: 0;
+  color: var(--muted);
+}
+
+.hint {
+  margin-top: -0.6rem;
+  font-size: 0.85rem;
+}
+
+.waveform {
+  --wave-dim: #4a505d;
+  --wave-bright: #f2b33d;
+  --wave-region: rgba(242, 179, 61, 0.14);
+  --wave-playhead: #ffffff;
+  display: block;
+  width: 100%;
+  height: 140px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.transport,
+.export {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-bottom: 0.45rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.field input,
+.field select {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.field input[type='number'] {
+  width: 6.5rem;
+}
+
+.field.grow {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.field.ambience {
+  max-width: 20rem;
+  margin-top: 1rem;
+}
+
+.times {
+  padding-bottom: 0.45rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.dimmed {
+  opacity: 0.4;
+}
+
+/* Reglagen */
+
+.mix {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.presets-label {
+  margin-right: 0.25rem;
+  color: var(--muted);
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0.75rem 1rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+}
+
+.group legend {
+  padding: 0 0.4rem;
+  color: var(--muted);
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.slider-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.slider-head output {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.slider-hint {
+  color: var(--muted);
+  font-size: 0.8rem;
+}

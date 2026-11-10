@@ -1,0 +1,11 @@
+# PyTorch med CUDA 12.6 finns bara i PyTorchs eget paketregister.
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch==2.14.1+cu126
+demucs==4.1.0
+numpy
+# Håll yt-dlp uppdaterad. YouTube ändras ofta, och gamla versioner slutar fungera.
+yt-dlp[default]
+imageio-ffmpeg
+fastapi
+uvicorn
+python-multipart
